@@ -1,5 +1,5 @@
 import esbuild from 'esbuild';
-import { existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import path, { join } from 'path';
 import fs from 'fs';
 
@@ -33,9 +33,10 @@ esbuild
     bundle: true,
     sourcemap: true,
     minify: true,
-    splitting: true,
-    format: 'esm',
-    define: { global: 'window' },
-    target: ['esnext'],
+    platform: 'node',
+    target: ['node16'],
   })
   .catch(() => process.exit(1));
+
+// an entry file for cjs at the root of the bundle
+writeFileSync(join(dist, 'index.js'), "export * from './esm/index.js';");
