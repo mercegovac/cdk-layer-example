@@ -1,13 +1,14 @@
 {
   "name": "layer-example",
-  "version": "0.1.0",
-  "main": "./dist/package/layer-example.js",
-  "types": "./dist/package/layer-example.d.ts",
+  "version": "0.2.0",
+  "main": "./dist/package/src/index.js",
+  "types": "./dist/package/src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "compile": "(bash ./generate-barrels.sh) && tsc && node dist/package/build.js"
   },
   "devDependencies": {
     "@types/glob": "^8.0.0",
