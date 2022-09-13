@@ -29,10 +29,10 @@ getFilesRecursively('./src');
 esbuild
   .build({
     entryPoints: files,
-    outdir: 'dist/layer/nodejs/node_modules',
+    outdir: 'dist/layer/nodejs/node_modules/layer-example',
     bundle: true,
     sourcemap: true,
-    minify: true,
+    minify: false,
     platform: 'node',
     target: ['node16'],
   })
